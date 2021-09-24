@@ -14,9 +14,67 @@ Pytorch 1.5.0 +
 
 ### Dataset
 For faster training, we recommend .jpg file format.
-[CelebA-HQ](https://drive.google.com/drive/folders/0B4qLcYyJmiz0TXY1NG02bzZVRGs?resourcekey=0-arAVTUfW9KRhN-irJchVKQ)
+
+Download Link:
+[CelebA-HQ](https://drive.google.com/drive/folders/0B4qLcYyJmiz0TXY1NG02bzZVRGs?resourcekey=0-arAVTUfW9KRhN-irJchVKQ) / 
 [AFHQ](https://github.com/clovaai/stargan-v2)
 
-Unzip the files and put the folder into data directory (./data/Celeb , ./data/afhq)
+Unzip the files and put the folder into the data directory (```./data/Celeb/data1024``` , ```./data/afhq```)
 
-### Train
+To train the multidomain Diagonal GAN, run 
+
+```
+./data/Celeb/Celeb_proc.py 
+```
+After download the CelebA-HQ dataset to save males / females images in different folders.
+
+We randomly selected 1000 images as validation set for each domain (1000 males / 1000 females).
+
+Save validation files into ```./data/Celeb/val/males``` , ```./data/Celeb/val/females```
+
+### Train Basic Diagonal GAN
+For full-resolution CelebA-HQ training,
+
+```
+python train.py --datapath ./data/Celeb/data1024 --sched --max_size 1024 --loss r1
+```
+
+For full-resolution AFHQ training,
+
+```
+python train.py --datapath ./data/afhq --sched --max_size 512 --loss r1
+```
+### Train Multidomain Diagonal GAN
+For training multidomain (Males/ Females) models, run
+
+```
+python train_multidomain.py --datapath ./data/Celeb/mult --sched --max_size 256
+```
+
+### Train IDInvert on pre-trained Multidomain Diagonal GAN
+For training IDInvert on  pre-trained model,
+```
+python train_idinvert.py --ckpt $MODEL_PATH$ 
+```
+
+or you can download the pre-trained Multidomain model. 
+
+Save the model in ```./checkpoint/train_mult/CelebAHQ_mult.model```
+
+and set ```$MODEL_PATH$``` as above.
+
+### Additional latent code optimization ( for inference )
+For further optimize the latent codes, 
+
+```
+python train_idinvert_opt.py --ckpt $MODEL_PATH$ --enc_ckpt $ENC_MODEL_PATH$
+```
+
+```MODEL_PATH``` is pre-trained multidomain model directory, and
+
+```ENC_MODEL_PATH``` is IDInvert encoder model directory.
+
+You can download pre-trained IDInvert encoder models.
+
+We also provide optimized latent codes. 
+
