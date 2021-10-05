@@ -85,16 +85,16 @@ We also provide optimized latent codes.
 ## Pre-trained model Download
 
 
-Pre-trained Diagonal GAN on 1024x1024 CelebA-HQ : [Link]()
+Pre-trained Diagonal GAN on 1024x1024 CelebA-HQ : [Link](https://drive.google.com/drive/folders/1VvLNwNIaquXz9tKZKXI4xMwCzCt6tN3k?usp=sharing)
 save to ```./checkpoint/train_basic```
 
-Pre-trained Multidomain Diagonal GAN on 256x256 CelebA-HQ : [Link]()
+Pre-trained Multidomain Diagonal GAN on 256x256 CelebA-HQ : [Link](https://drive.google.com/drive/folders/1R00015UnqQk6KZZugvwy79xoZsdAOPuF?usp=sharing)
 save to ```./checkpoint/train_mult```
 
-Pre-trained IDInvert Encoders on 256x256 CelebA-HQ : [Link]()
+Pre-trained IDInvert Encoders on 256x256 CelebA-HQ : [Link](https://drive.google.com/drive/folders/1or9QzF5wiO4LUczpAPV3tLNquHJgG865?usp=sharing)
 save to ```./checkpoint/train_idinvert```
 
-Optimized latent codes : [Link]()
+Optimized latent codes : [Link](https://drive.google.com/drive/folders/1DBLLm45tdjMMD42Xp_JI1m1U-yHF53rf?usp=sharing)
 save to ```./codes```
 
 ## Generate Images
