@@ -8,8 +8,10 @@ One of the important research topics in image generative models is to disentangl
 
 ![Models9](https://user-images.githubusercontent.com/88644048/130436052-f9c213b3-a3f4-403f-84b9-9ccdad8c8970.png)
 
+
 ### Environment Settings
 Python 3.6.7 +
+
 Pytorch 1.5.0 +
 
 ### Dataset
@@ -32,6 +34,8 @@ We randomly selected 1000 images as validation set for each domain (1000 males /
 
 Save validation files into ```./data/Celeb/val/males``` , ```./data/Celeb/val/females```
 
+
+## Train
 ### Train Basic Diagonal GAN
 For full-resolution CelebA-HQ training,
 
@@ -51,7 +55,7 @@ For training multidomain (Males/ Females) models, run
 python train_multidomain.py --datapath ./data/Celeb/mult --sched --max_size 256
 ```
 
-### Train IDInvert on pre-trained Multidomain Diagonal GAN
+### Train IDInvert Encoders on pre-trained Multidomain Diagonal GAN
 For training IDInvert on  pre-trained model,
 ```
 python train_idinvert.py --ckpt $MODEL_PATH$ 
@@ -64,7 +68,7 @@ Save the model in ```./checkpoint/train_mult/CelebAHQ_mult.model```
 and set ```$MODEL_PATH$``` as above.
 
 ### Additional latent code optimization ( for inference )
-For further optimize the latent codes, 
+To further optimize the latent codes, 
 
 ```
 python train_idinvert_opt.py --ckpt $MODEL_PATH$ --enc_ckpt $ENC_MODEL_PATH$
@@ -74,7 +78,80 @@ python train_idinvert_opt.py --ckpt $MODEL_PATH$ --enc_ckpt $ENC_MODEL_PATH$
 
 ```ENC_MODEL_PATH``` is IDInvert encoder model directory.
 
-You can download pre-trained IDInvert encoder models.
+You can download the pre-trained IDInvert encoder models.
 
 We also provide optimized latent codes. 
+
+## Pre-trained model Download
+
+
+Pre-trained Diagonal GAN on 1024x1024 CelebA-HQ : [Link]()
+save to ```./checkpoint/train_basic```
+
+Pre-trained Multidomain Diagonal GAN on 256x256 CelebA-HQ : [Link]()
+save to ```./checkpoint/train_mult```
+
+Pre-trained IDInvert Encoders on 256x256 CelebA-HQ : [Link]()
+save to ```./checkpoint/train_idinvert```
+
+Optimized latent codes : [Link]()
+save to ```./codes```
+
+## Generate Images
+To generate the images from the pre-trained model,
+
+```
+python generate.py --mode $MODE$ --domain $DOM$ --target_layer $TARGET$
+```
+
+for ```$MODE$```, there is three choices  (sample , mixing, interpolation).
+
+using 'sample' just sample random samples, 
+
+for 'mixing', generate images with random code on target layer ```$TARGET$```
+
+for 'interpolate', generate with random interpolation on target layer ```$TARGET$```
+
+also, we can choose style or content with setting ```$DOM$``` with 'style' or 'content'
+
+
+## Generate Images on Inverted model
+To generate the images from the pre-trained IDInvert,
+
+```
+python generate_idinvert.py --mode $MODE$ --domain $DOM$ --target_layer $TARGET$
+```
+
+for ```$MODE$```, there is three choices  (sample , mixing, encode).
+
+using 'sample' just sample random samples, 
+
+for 'mixing', generate images with random code on target layer ```$TARGET$```
+
+for 'encode', generate auto-encoder reconstructions
+
+we can choose style or content with setting ```$DOM$``` with 'style' or 'content'
+
+To use additional optimized latent codes, activate ```--use_code```
+
+
+## Examples
+
+```
+python generate.py --mode sample 
+```
+![03_content_sample](https://user-images.githubusercontent.com/88644048/135963795-e2196dfe-b55e-431e-b119-550d5a0be9ce.jpg)
+
+8x8 resolution content
+```
+python generate.py --mode mixing --domain content --target_layer 2 3
+```
+![03_content_mixing](https://user-images.githubusercontent.com/88644048/135963856-56d9d83f-a72e-497d-b8f9-c6f6729d644c.jpg)
+
+
+High resolution style
+```
+python generate.py --mode mixing --domain style --target_layer 14 15 16 17
+```
+![02_style_mixing](https://user-images.githubusercontent.com/88644048/135963909-f0fa988a-c8f5-4920-ba07-e8719d0a69d5.jpg)
 
