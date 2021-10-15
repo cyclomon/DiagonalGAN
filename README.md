@@ -29,7 +29,7 @@ Download Link:
 
 Unzip the files and put the folder into the data directory (```./data/Celeb/data1024``` , ```./data/afhq```)
 
-To train the multidomain Diagonal GAN, run 
+To process the data for multidomain Diagonal GAN, run 
 
 ```
 ./data/Celeb/Celeb_proc.py 
