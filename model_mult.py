@@ -571,6 +571,7 @@ class StyledGenerator(nn.Module):
         self,
         input,
         input2,
+        y,
         noise=None,
         step=0,
         alpha=-1,
@@ -584,8 +585,8 @@ class StyledGenerator(nn.Module):
         
     ):
 
-        styles = self.style(input)
-        pix = self.pix(input2)
+        styles,pix = self.mapping(input,input2,y)
+        
 
         batch = input.shape[0]
 
