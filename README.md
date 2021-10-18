@@ -94,6 +94,9 @@ We also provide optimized latent codes.
 Pre-trained Diagonal GAN on 1024x1024 CelebA-HQ : [Link](https://drive.google.com/drive/folders/1VvLNwNIaquXz9tKZKXI4xMwCzCt6tN3k?usp=sharing)
 save to ```./checkpoint/train_basic```
 
+Pre-trained Diagonal GAN on 512x512 AFHQ : [Link](https://drive.google.com/drive/folders/1VvLNwNIaquXz9tKZKXI4xMwCzCt6tN3k?usp=sharing)
+save to ```./checkpoint/train_basic```
+
 Pre-trained Multidomain Diagonal GAN on 256x256 CelebA-HQ : [Link](https://drive.google.com/drive/folders/1R00015UnqQk6KZZugvwy79xoZsdAOPuF?usp=sharing)
 save to ```./checkpoint/train_mult```
 
