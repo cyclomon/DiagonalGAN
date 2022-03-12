@@ -14,6 +14,16 @@ One of the important research topics in image generative models is to disentangl
 
 ![Models9](https://user-images.githubusercontent.com/88644048/130436052-f9c213b3-a3f4-403f-84b9-9ccdad8c8970.png)
 
+### Citation
+```
+@inproceedings{kwon2021diagonal,
+  title={Diagonal attention and style-based GAN for content-style disentanglement in image generation and translation},
+  author={Kwon, Gihyun and Ye, Jong Chul},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  pages={13980--13989},
+  year={2021}
+}
+```
 
 ### Environment Settings
 Python 3.6.7 +
