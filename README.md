@@ -1,5 +1,7 @@
 # DiagonalGAN
 ## Official Pytorch Implementation of "Diagonal Attention and Style-based GAN for Content-Style Disentanglement in Image Generation and Translation" (ICCV 2021)
+### [Gihyun Kwon](https://sites.google.com/view/gihyunkwon), Jong Chul Ye
+
 Arxiv : [link](https://arxiv.org/abs/2103.16146)
  CVF : [link](https://openaccess.thecvf.com/content/ICCV2021/papers/Kwon_Diagonal_Attention_and_Style-Based_GAN_for_Content-Style_Disentanglement_in_Image_ICCV_2021_paper.pdf)
 
